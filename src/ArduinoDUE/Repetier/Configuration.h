@@ -33,7 +33,7 @@
 #define VERSION_MINOR_YEAR "22"
 #define VERSION_MINOR_MONTH "10"
 #define VERSION_MINOR_DAY "10"
-#define VERSION_BUILD "2"
+#define VERSION_BUILD "3"
 
 //Davinci screen is not standard reprap it is WINSTAR 16x4
 #if DAVINCI==0
@@ -61,7 +61,7 @@
 #undef MODEL
 #define MODEL 1
 #endif
-//to enable communication using wifi module set to 1
+//to enable communication using wifi module set to 1 ESP3D 
 #define ENABLE_WIFI 1
 //define the wifi serial output
 //on Davinci use Serial
@@ -97,7 +97,7 @@
 #define CASE_FILAMENT_SENSOR_DEFAULT_ON 1
 #define CASE_TOP_SENSOR_DEFAULT_ON 1
 #define CASE_SOUND_DEFAULT_ON 1
-#define CASE_WIFI_DEFAULT_ON 0
+#define CASE_WIFI_DEFAULT_ON 1 //" si es 0 se debe activar en la impresora para que mande los datos por UART"
 //default mode is advanced
 #define CASE_DISPLAY_MODE_DEFAULT 1
 
@@ -325,9 +325,9 @@ Overridden if EEPROM activated.*/
 // Retraction for sd pause over lcd
 #define RETRACT_ON_PAUSE 2
 // These commands get executed after storing position and going to park position.
-#define PAUSE_START_COMMANDS "M117 SD Paused"
+#define PAUSE_START_COMMANDS "M117 SD Pausado"
 // These commands get executed before we go to stored position.
-#define PAUSE_END_COMMANDS "M117 Printing ..."
+#define PAUSE_END_COMMANDS "M117 Imprimiendo ..."
 /* Set to 1 if all extruders use the same heater block. Temp. control is then always
 controlled by settings in extruder 0 definition. */
 #define SHARED_EXTRUDER_HEATER 0
@@ -389,7 +389,7 @@ controlled by settings in extruder 0 definition. */
 #define EXT0_ENABLE2_PIN E0_ENABLE_PIN
 
 // For Inverting Stepper Enable Pins (Active Low) use 0, Non Inverting (Active High) use 1
-#define EXT0_ENABLE_ON 0
+#define EXT0_ENABLE_ON 1
 // The following speed settings are for skeinforge 40+ where e is the
 // length of filament pulled inside the heater. For repsnap or older
 // skeinforge use higher values.
@@ -1522,9 +1522,9 @@ boards you might need to make it inverting.
 /** Communication errors can swallow part of the ok, which tells the host software to send
 the next command. Not receiving it will cause your printer to stop. Sending this string every
 second, if our queue is empty should prevent this. Comment it, if you don't wan't this feature. */
-#define WAITING_IDENTIFIER "wait"
+#define WAITING_IDENTIFIER "" // wait
 //Davinci Specific
-#define RESET_IDENTIFIER "start"
+#define RESET_IDENTIFIER ""  // start
 
 /** \brief Sets time for echo debug
 
